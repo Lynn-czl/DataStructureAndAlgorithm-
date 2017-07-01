@@ -6,12 +6,17 @@ using namespace std;
 class Solution {
 public:
     vector<int> grayCode(int n) {
-        if(n == 0)
-            return 0;
-        vector<string> vv[2];
-        int flag=0;
-        vv[0].push_back(t1);
-        vv[0].push_back(t2);
+        vector<int> res;
+        int begin = 0;
+        res.push_back(0);
+        for(int i=0; i<n; i++){
+            for(int j=res.size()-1; j>=0; j--){
+                int cur = res[j];
+                cur += (1 << i);
+                res.push_back(cur);
+            }
+        }
+        return res;
     }
 };
 
